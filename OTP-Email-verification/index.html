@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Authentication</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e3f2fd, #f1f8ff);
+    }
+
+    .card {
+      background: white;
+      width: 440px;
+      padding: 50px 45px;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      transition: 0.3s ease;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .switch-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .switch-buttons button {
+      padding: 8px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background-color: #f1f1f1;
+      transition: 0.2s;
+    }
+
+    .switch-buttons button:hover {
+      background-color: #e4e4e4;
+    }
+
+    .active {
+      background-color: #22c55e !important;
+      color: white;
+    }
+
+    .section {
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    /* Force center plugin buttons */
+    .plugin-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 35px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <!-- Dynamic Heading -->
+    <h1 id="mainHeading">Sign in with Phone</h1>
+    <div class="subtitle">Secure login using OTP verification</div>
+
+    <!-- Toggle Buttons -->
+    <div class="switch-buttons">
+      <button id="phoneBtn" class="active" onclick="showPhone()">Phone</button>
+      <button id="emailBtn" onclick="showEmail()">Email</button>
+    </div>
+
+    <!-- PHONE -->
+    <div id="phoneSection" class="section" style="display:block;">
+      <div class="plugin-wrapper">
+        <div class="pe_signin_button" data-client-id="14919670971181910205">
+          <script src="https://www.phone.email/sign_in_button_v1.js" async></script>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div id="emailSection" class="section">
+      <div class="plugin-wrapper">
+        <div class="pe_verify_email" data-client-id="14919670971181910205">
+          <script src="https://www.phone.email/verify_email_v1.js" async></script>
+        </div>
+      </div>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="footer">
+      By continuing, you agree to our
+      <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
+    </div>
+
+  </div>
+
+  <script>
+    function showPhone() {
+      document.getElementById("phoneSection").style.display = "block";
+      document.getElementById("emailSection").style.display = "none";
+      document.getElementById("phoneBtn").classList.add("active");
+      document.getElementById("emailBtn").classList.remove("active");
+      document.getElementById("mainHeading").innerText = "Sign in with Phone";
+    }
+
+    function showEmail() {
+      document.getElementById("phoneSection").style.display = "none";
+      document.getElementById("emailSection").style.display = "block";
+      document.getElementById("emailBtn").classList.add("active");
+      document.getElementById("phoneBtn").classList.remove("active");
+      document.getElementById("mainHeading").innerText = "Sign in with Email";
+    }
+  </script>
+
+  <script type="module" src="./app.js"></script>
+
+</body>
+</html>
